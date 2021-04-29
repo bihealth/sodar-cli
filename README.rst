@@ -5,6 +5,8 @@
     :target: https://www.codacy.com/gh/bihealth/sodar-cli/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=bihealth/sodar-cli&amp;utm_campaign=Badge_Grade
 .. image:: https://app.codacy.com/project/badge/Coverage/0bf5c6d8a91e4a7380676672e466525d
     :target: https://www.codacy.com/gh/bihealth/sodar-cli/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=bihealth/sodar-cli&amp;utm_campaign=Badge_Coverage
+.. image:: https://coveralls.io/repos/github/bihealth/sodar-cli/badge.svg?branch=main
+    :target: https://coveralls.io/github/bihealth/sodar-cli?branch=main
 .. image:: https://img.shields.io/badge/License-MIT-green.svg
     :alt: MIT License
     :target: https://opensource.org/licenses/MIT
