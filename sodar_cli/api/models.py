@@ -30,10 +30,16 @@ CONVERTER = _setup_converter()
 
 @attr.s(frozen=True, auto_attribs=True)
 class User:
+    """Represents a user in the SODAR API."""
+
+    #: UUID of the user
     sodar_uuid: str
+    #: Username of the user
     username: str
+    #: Real name of the user
     name: str
-    email: typing.Optional[str]
+    #: Email address of the user
+    email: str
 
 
 @attr.s(frozen=True, auto_attribs=True)
@@ -98,20 +104,6 @@ class Investigation:
     project: str
     studies: typing.Dict[str, Study]
     title: str
-
-
-@attr.s(frozen=True, auto_attribs=True)
-class User:
-    """Represents a user in the SODAR API."""
-
-    #: UUID of the user
-    sodar_uuid: str
-    #: Username of the user
-    username: str
-    #: Real name of the user
-    name: str
-    #: Email address of the user
-    email: str
 
 
 @attr.s(frozen=True, auto_attribs=True, kw_only=True)
