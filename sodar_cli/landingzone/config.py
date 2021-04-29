@@ -77,7 +77,7 @@ class LandingZoneCreateConfig:
     config_data: typing.Optional[typing.Any] = None
 
     #: Special configuration.
-    configuration: typing.Optional[typing.Any] = None
+    configuration: typing.Optional[str] = None
 
     #: Description of landing zone.
     description: typing.Optional[str] = None
