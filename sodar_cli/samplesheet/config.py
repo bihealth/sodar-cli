@@ -32,11 +32,11 @@ class SampleSheetRetrieveConfig:
     project_uuid: uuid.UUID
 
     @staticmethod
-    def create(args, project_config, toml_config=None):
+    def create(args, samplesheet_config, toml_config=None):
         _ = toml_config
         # toml_config = toml_config or {}
         return SampleSheetRetrieveConfig(
-            project_config=project_config, project_uuid=args.project_uuid
+            samplesheet_config=samplesheet_config, project_uuid=args.project_uuid
         )
 
 
@@ -54,10 +54,12 @@ class SampleSheetImportConfig:
     file_paths: typing.List[str]
 
     @staticmethod
-    def create(args, project_config, toml_config=None):
+    def create(args, samplesheet_config, toml_config=None):
         # toml_config = toml_config or {}
         return SampleSheetImportConfig(
-            project_config=project_config, file_paths=list(args.file_paths)
+            samplesheet_config=samplesheet_config,
+            project_uuid=args.project_uuid,
+            file_paths=list(args.file_paths),
         )
 
 
@@ -72,10 +74,10 @@ class SampleSheetExportConfig:
     project_uuid: uuid.UUID
 
     @staticmethod
-    def create(args, project_config, toml_config=None):
+    def create(args, samplesheet_config, toml_config=None):
         # toml_config = toml_config or {}
         return SampleSheetExportConfig(
-            project_config=project_config, project_uuid=args.project_uuid
+            samplesheet_config=samplesheet_config, project_uuid=args.project_uuid
         )
 
 
@@ -90,6 +92,8 @@ class SampleDataFileExistsConfig:
     md5_sum: str
 
     @staticmethod
-    def create(args, project_config, toml_config=None):
+    def create(args, samplesheet_config, toml_config=None):
         # toml_config = toml_config or {}
-        return SampleDataFileExistsConfig(project_config=project_config, md5_sum=args.md5_sum)
+        return SampleDataFileExistsConfig(
+            samplesheet_config=samplesheet_config, md5_sum=args.md5_sum
+        )
