@@ -25,21 +25,21 @@ def common_config(args):
 
 
 @pytest.fixture
-def project_config(args, common_config):
+def samplesheet_config(args, common_config):
     return config.SampleSheetConfig.create(args, common_config)
 
 
-def test_samplesheet_retrieve_config(args, common_config):
+def test_samplesheet_retrieve_config(args, samplesheet_config):
     config.SampleSheetRetrieveConfig.create(args, common_config)
 
 
-def test_samplesheet_import_config(args, common_config):
+def test_samplesheet_import_config(args, samplesheet_config):
     config.SampleSheetImportConfig.create(args, common_config)
 
 
-def test_samplesheet_export_config(args, common_config):
+def test_samplesheet_export_config(args, samplesheet_config):
     config.SampleSheetExportConfig.create(args, common_config)
 
 
-def test_sample_data_file_exists_config(args, common_config):
+def test_sample_data_file_exists_config(args, samplesheet_config):
     config.SampleDataFileExistsConfig.create(args, common_config)

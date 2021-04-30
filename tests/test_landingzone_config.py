@@ -37,7 +37,7 @@ def test_landingzone_list_config(args, landingzone_config):
     config.LandingZoneListConfig.create(args, landingzone_config)
 
 
-def tet_landingzone_retrieve_config(args, landingzone_config):
+def test_landingzone_retrieve_config(args, landingzone_config):
     config.LandingZoneRetrieveConfig.create(args, landingzone_config)
 
 

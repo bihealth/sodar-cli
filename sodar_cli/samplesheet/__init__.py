@@ -17,6 +17,9 @@ def setup_argparse(parser: argparse.ArgumentParser) -> None:
     setup_argparse_retrieve(
         subparsers.add_parser("import", help="Retrieve sample sheet for project.")
     )
+    setup_argparse_import(
+        subparsers.add_parser("retrieve", help="Retrieve investigation information.")
+    )
     setup_argparse_import(subparsers.add_parser("import", help="Import ISA-tab into project."))
     setup_argparse_export(subparsers.add_parser("export", help="Export ISA-tab from project."))
     setup_argparse_fileexists(
