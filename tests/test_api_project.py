@@ -70,22 +70,11 @@ def test_project_create(requests_mock):
 
 
 def test_project_update(requests_mock):
-    # Move landing zone
-    m_args = {
+    r_args = {
         "sodar_url": "https://sodar.example.com/",
         "project_uuid": "46f4d0d7-b446-4a04-99c4-53cbffe952a3",
         "sodar_api_token": "token",
     }
-    m_tpl = "%(sodar_url)sprojects/api/submit/move/%(project_uuid)s"
-    m_result = factories.ProjectFactory(sodar_uuid=m_args["project_uuid"])
-    requests_mock.register_uri(
-        "POST",
-        m_tpl % m_args,
-        headers={"Authorization": "Token %s" % m_args["sodar_api_token"]},
-        json=cattr.unstructure(m_result),
-    )
-    # Update project.
-    r_args = m_args.copy()
     p_obj = factories.ProjectFactory()
     r_args["project"] = p_obj
     r_tpl = "%(sodar_url)sproject/api/update/%(project_uuid)s"

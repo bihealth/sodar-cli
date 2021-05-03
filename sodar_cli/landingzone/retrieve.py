@@ -1,8 +1,8 @@
 """Implementation of ``varfish-cli landingzone retrieve``."""
 
 import argparse
-import sys
 import json
+import sys
 import uuid
 
 import cattr

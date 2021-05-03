@@ -19,12 +19,12 @@ def setup_argparse(parser: argparse.ArgumentParser) -> None:
     setup_argparse_create(
         subparsers.add_parser("create", help="Create project (there is no delete!).")
     )
-    setup_argparse_update(subparsers.add_parser("delete", help="Update project."))
+    setup_argparse_update(subparsers.add_parser("update", help="Update project."))
 
 
 def run(config, toml_config, args, parser, subparser):
     """Main entry point for case command."""
-    if not args.case_cmd:  # pragma: nocover
+    if not args.project_cmd:  # pragma: nocover
         return run_nocmd(config, args, parser, subparser)
     else:
         config = ProjectConfig.create(args, config, toml_config)

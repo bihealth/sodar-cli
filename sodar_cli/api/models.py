@@ -54,8 +54,9 @@ class Project:
     sodar_uuid: str
     title: str
     type: str
-    submit_status: str
-    roles: typing.Dict[str, RoleAssignment]
+    roles: typing.Optional[typing.Dict[str, RoleAssignment]] = None
+    submit_status: typing.Optional[str] = None
+    parent_uuid: typing.Optional[str] = None
     parent: typing.Optional[str] = None
     readme: typing.Optional[str] = None
     description: typing.Optional[str] = None
