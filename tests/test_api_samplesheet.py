@@ -24,7 +24,7 @@ def test_samplesheet_retrieve(requests_mock):
     assert expected == result
 
 
-def test_samplesheets_get(requests_mock):
+def test_samplesheets_export(requests_mock):
     args = {
         "sodar_url": "https://sodar.example.com/",
         "project_uuid": "46f4d0d7-b446-4a04-99c4-53cbffe952a3",
@@ -38,7 +38,7 @@ def test_samplesheets_get(requests_mock):
         headers={"Authorization": "Token %s" % args["sodar_api_token"]},
         json=expected,
     )
-    result = samplesheet.download(**args)
+    result = samplesheet.export(**args)
     assert expected == result
 
 

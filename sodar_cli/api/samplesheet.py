@@ -29,7 +29,7 @@ def retrieve(*, sodar_url, sodar_api_token, project_uuid):
     return cattr.structure(r.json(), models.Investigation)
 
 
-def download(*, sodar_url, sodar_api_token, project_uuid):
+def export(*, sodar_url, sodar_api_token, project_uuid):
     """Get ISA-tab sample sheet from SODAR."""
     while sodar_url.endswith("/"):
         sodar_url = sodar_url[:-1]
