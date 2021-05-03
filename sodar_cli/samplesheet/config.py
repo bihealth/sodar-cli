@@ -10,7 +10,7 @@ from sodar_cli.common import CommonConfig
 
 @attr.s(frozen=True, auto_attribs=True)
 class SampleSheetConfig:
-    """Configuration for the ``varfish-cli samplesheet`` command."""
+    """Configuration for the ``sodar-cli samplesheet`` command."""
 
     #: Global configuration.
     global_config: CommonConfig
@@ -23,7 +23,7 @@ class SampleSheetConfig:
 
 @attr.s(frozen=True, auto_attribs=True)
 class SampleSheetRetrieveConfig:
-    """Configuration for the ``varfish-cli samplesheet retrieve`` command."""
+    """Configuration for the ``sodar-cli samplesheet retrieve`` command."""
 
     #: Landing zone configuration.
     samplesheet_config: SampleSheetConfig
@@ -42,7 +42,7 @@ class SampleSheetRetrieveConfig:
 
 @attr.s(frozen=True, auto_attribs=True)
 class SampleSheetImportConfig:
-    """Configuration for the ``varfish-cli samplesheet import`` command."""
+    """Configuration for the ``sodar-cli samplesheet import`` command."""
 
     #: Landing zone configuration.
     samplesheet_config: SampleSheetConfig
@@ -65,7 +65,7 @@ class SampleSheetImportConfig:
 
 @attr.s(frozen=True, auto_attribs=True)
 class SampleSheetExportConfig:
-    """Configuration for the ``varfish-cli samplesheet export`` command."""
+    """Configuration for the ``sodar-cli samplesheet export`` command."""
 
     #: Landing zone configuration.
     samplesheet_config: SampleSheetConfig
@@ -83,7 +83,7 @@ class SampleSheetExportConfig:
 
 @attr.s(frozen=True, auto_attribs=True)
 class SampleDataFileExistsConfig:
-    """Configuration for the ``varfish-cli samplesheet file-exists`` command."""
+    """Configuration for the ``sodar-cli samplesheet file-exists`` command."""
 
     #: Landing zone configuration.
     samplesheet_config: SampleSheetConfig

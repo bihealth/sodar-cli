@@ -1,4 +1,4 @@
-"""Implementation of ``varfish-cli project update``."""
+"""Implementation of ``sodar-cli project update``."""
 
 import argparse
 import sys

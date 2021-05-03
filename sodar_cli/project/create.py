@@ -1,4 +1,4 @@
-"""Implementation of ``varfish-cli project create``."""
+"""Implementation of ``sodar-cli project create``."""
 
 import argparse
 import json

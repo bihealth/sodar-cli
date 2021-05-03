@@ -10,7 +10,7 @@ from ..common import CommonConfig
 
 @attr.s(frozen=True, auto_attribs=True)
 class ProjectConfig:
-    """Configuration for the ``varfish-cli project`` command."""
+    """Configuration for the ``sodar-cli project`` command."""
 
     #: Global configuration.
     global_config: CommonConfig
@@ -23,7 +23,7 @@ class ProjectConfig:
 
 @attr.s(frozen=True, auto_attribs=True)
 class ProjectListConfig:
-    """Configuration for the ``varfish-cli project list`` command."""
+    """Configuration for the ``sodar-cli project list`` command."""
 
     #: Landing zone configuration.
     project_config: ProjectConfig
@@ -38,7 +38,7 @@ class ProjectListConfig:
 
 @attr.s(frozen=True, auto_attribs=True)
 class ProjectRetrieveConfig:
-    """Configuration for the ``varfish-cli project retrieve`` command."""
+    """Configuration for the ``sodar-cli project retrieve`` command."""
 
     #: Landing zone configuration.
     project_config: ProjectConfig
@@ -55,7 +55,7 @@ class ProjectRetrieveConfig:
 
 @attr.s(frozen=True, auto_attribs=True)
 class ProjectCreateConfig:
-    """Configuration for the ``varfish-cli project create`` command."""
+    """Configuration for the ``sodar-cli project create`` command."""
 
     #: Landing zone configuration.
     project_config: ProjectConfig
@@ -86,7 +86,7 @@ class ProjectCreateConfig:
 
 @attr.s(frozen=True, auto_attribs=True)
 class ProjectUpdateConfig:
-    """Configuration for the ``varfish-cli project update`` command."""
+    """Configuration for the ``sodar-cli project update`` command."""
 
     #: Landing zone configuration.
     project_config: ProjectConfig

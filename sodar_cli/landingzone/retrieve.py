@@ -1,4 +1,4 @@
-"""Implementation of ``varfish-cli landingzone retrieve``."""
+"""Implementation of ``sodar-cli landingzone retrieve``."""
 
 import argparse
 import json

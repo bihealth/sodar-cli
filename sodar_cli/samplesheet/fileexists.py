@@ -1,4 +1,4 @@
-"""Implementation of ``varfish-cli samplesheet fileexist``."""
+"""Implementation of ``sodar-cli samplesheet fileexist``."""
 
 import argparse
 import sys

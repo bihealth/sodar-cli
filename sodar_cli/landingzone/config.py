@@ -11,7 +11,7 @@ from ..common import CommonConfig
 
 @attr.s(frozen=True, auto_attribs=True)
 class LandingZoneConfig:
-    """Configuration for the ``varfish-cli landingzone`` command."""
+    """Configuration for the ``sodar-cli landingzone`` command."""
 
     #: Global configuration.
     global_config: CommonConfig
@@ -25,7 +25,7 @@ class LandingZoneConfig:
 
 @attr.s(frozen=True, auto_attribs=True)
 class LandingZoneListConfig:
-    """Configuration for the ``varfish-cli landingzone list`` command."""
+    """Configuration for the ``sodar-cli landingzone list`` command."""
 
     #: Landing zone configuration.
     landingzone_config: LandingZoneConfig
@@ -44,7 +44,7 @@ class LandingZoneListConfig:
 
 @attr.s(frozen=True, auto_attribs=True)
 class LandingZoneRetrieveConfig:
-    """Configuration for the ``varfish-cli landingzone retrieve`` command."""
+    """Configuration for the ``sodar-cli landingzone retrieve`` command."""
 
     #: Landing zone configuration.
     landingzone_config: LandingZoneConfig
@@ -62,7 +62,7 @@ class LandingZoneRetrieveConfig:
 
 @attr.s(frozen=True, auto_attribs=True)
 class LandingZoneCreateConfig:
-    """Configuration for the ``varfish-cli landingzone create`` command."""
+    """Configuration for the ``sodar-cli landingzone create`` command."""
 
     #: Landing zone configuration.
     landingzone_config: LandingZoneConfig
@@ -101,7 +101,7 @@ class LandingZoneCreateConfig:
 
 @attr.s(frozen=True, auto_attribs=True)
 class LandingZoneSubmitDeleteConfig:
-    """Configuration for the ``varfish-cli landingzone submit-delete`` command."""
+    """Configuration for the ``sodar-cli landingzone submit-delete`` command."""
 
     #: Landing zone configuration.
     landingzone_config: LandingZoneConfig
@@ -119,7 +119,7 @@ class LandingZoneSubmitDeleteConfig:
 
 @attr.s(frozen=True, auto_attribs=True)
 class LandingZoneSubmitValidateConfig:
-    """Configuration for the ``varfish-cli landingzone submit-validate`` command."""
+    """Configuration for the ``sodar-cli landingzone submit-validate`` command."""
 
     #: Landing zone configuration.
     landingzone_config: LandingZoneConfig
@@ -137,7 +137,7 @@ class LandingZoneSubmitValidateConfig:
 
 @attr.s(frozen=True, auto_attribs=True)
 class LandingZoneSubmitMoveConfig:
-    """Configuration for the ``varfish-cli landingzone submit-move`` command."""
+    """Configuration for the ``sodar-cli landingzone submit-move`` command."""
 
     #: Landing zone configuration.
     landingzone_config: LandingZoneConfig

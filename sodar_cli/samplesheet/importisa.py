@@ -1,4 +1,4 @@
-"""Implementation of ``varfish-cli samplesheet import``."""
+"""Implementation of ``sodar-cli samplesheet import``."""
 
 import argparse
 import sys

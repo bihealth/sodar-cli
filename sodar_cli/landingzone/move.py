@@ -1,4 +1,4 @@
-"""Implementation of ``varfish-cli landingzone move``."""
+"""Implementation of ``sodar-cli landingzone move``."""
 
 import argparse
 import sys
