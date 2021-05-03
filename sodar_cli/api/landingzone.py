@@ -9,12 +9,12 @@ from sodar_cli.api import samplesheet
 from sodar_cli.api import models
 
 
-def retrieve(*, sodar_url, sodar_api_token, landing_zone_uuid):
+def retrieve(*, sodar_url, sodar_api_token, landingzone_uuid):
     """Return landing zones in project."""
     while sodar_url.endswith("/"):
         sodar_url = sodar_url[:-1]
-    url_tpl = "%(sodar_url)s/landingzones/api/retrieve/%(landing_zone_uuid)s"
-    url = url_tpl % {"sodar_url": sodar_url, "landing_zone_uuid": landing_zone_uuid}
+    url_tpl = "%(sodar_url)s/landingzones/api/retrieve/%(landingzone_uuid)s"
+    url = url_tpl % {"sodar_url": sodar_url, "landingzone_uuid": landingzone_uuid}
 
     logger.debug("HTTP GET request to %s", url)
     headers = {"Authorization": "Token %s" % sodar_api_token}
@@ -69,14 +69,14 @@ def create(*, sodar_url, sodar_api_token, project_uuid, assay_uuid=None):
     return cattr.structure(r.json(), models.LandingZone)
 
 
-def submit_move(*, sodar_url, sodar_api_token, landing_zone_uuid):
+def submit_move(*, sodar_url, sodar_api_token, landingzone_uuid):
     """Move landing zone with the given UUID."""
     while sodar_url.endswith("/"):
         sodar_url = sodar_url[:-1]
 
     # Move landing zone through API.
-    url_tpl = "%(sodar_url)s/landingzones/api/submit/move/%(landing_zone_uuid)s"
-    url = url_tpl % {"sodar_url": sodar_url, "landing_zone_uuid": landing_zone_uuid}
+    url_tpl = "%(sodar_url)s/landingzones/api/submit/move/%(landingzone_uuid)s"
+    url = url_tpl % {"sodar_url": sodar_url, "landingzone_uuid": landingzone_uuid}
     logger.debug("HTTP POST request to %s", url)
     headers = {"Authorization": "Token %s" % sodar_api_token}
     r = requests.post(url, headers=headers)
@@ -84,18 +84,18 @@ def submit_move(*, sodar_url, sodar_api_token, landing_zone_uuid):
     return retrieve(
         sodar_url=sodar_url,
         sodar_api_token=sodar_api_token,
-        landing_zone_uuid=r.json()["sodar_uuid"],
+        landingzone_uuid=r.json()["sodar_uuid"],
     )
 
 
-def submit_validate(*, sodar_url, sodar_api_token, landing_zone_uuid):
+def submit_validate(*, sodar_url, sodar_api_token, landingzone_uuid):
     """Validate landing zone with the given UUID."""
     while sodar_url.endswith("/"):
         sodar_url = sodar_url[:-1]
 
     # Move landing zone through API.
-    url_tpl = "%(sodar_url)s/landingzones/api/submit/validate/%(landing_zone_uuid)s"
-    url = url_tpl % {"sodar_url": sodar_url, "landing_zone_uuid": landing_zone_uuid}
+    url_tpl = "%(sodar_url)s/landingzones/api/submit/validate/%(landingzone_uuid)s"
+    url = url_tpl % {"sodar_url": sodar_url, "landingzone_uuid": landingzone_uuid}
     logger.debug("HTTP POST request to %s", url)
     headers = {"Authorization": "Token %s" % sodar_api_token}
     r = requests.post(url, headers=headers)
@@ -103,5 +103,5 @@ def submit_validate(*, sodar_url, sodar_api_token, landing_zone_uuid):
     return retrieve(
         sodar_url=sodar_url,
         sodar_api_token=sodar_api_token,
-        landing_zone_uuid=r.json()["sodar_uuid"],
+        landingzone_uuid=r.json()["sodar_uuid"],
     )

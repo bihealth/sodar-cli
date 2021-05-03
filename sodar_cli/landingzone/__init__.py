@@ -7,7 +7,6 @@ from sodar_cli.landingzone.config import LandingZoneConfig
 from sodar_cli.landingzone.list import setup_argparse as setup_argparse_list
 from sodar_cli.landingzone.retrieve import setup_argparse as setup_argparse_retrieve
 from sodar_cli.landingzone.create import setup_argparse as setup_argparse_create
-from sodar_cli.landingzone.delete import setup_argparse as setup_argparse_delete
 from sodar_cli.landingzone.validate import setup_argparse as setup_argparse_validate
 from sodar_cli.landingzone.move import setup_argparse as setup_argparse_move
 
@@ -19,7 +18,6 @@ def setup_argparse(parser: argparse.ArgumentParser) -> None:
     setup_argparse_list(subparsers.add_parser("list", help="List landing zones."))
     setup_argparse_retrieve(subparsers.add_parser("retrieve", help="Retrieve landing zone."))
     setup_argparse_create(subparsers.add_parser("create", help="Create landing zone."))
-    setup_argparse_delete(subparsers.add_parser("delete", help="Delete landing zone (async)."))
     setup_argparse_validate(
         subparsers.add_parser("validate", help="Validate landing zone (async).")
     )

@@ -9,10 +9,10 @@ from . import factories
 def test_landingzone_retrieve(requests_mock):
     args = {
         "sodar_url": "https://sodar.example.com/",
-        "landing_zone_uuid": "46f4d0d7-b446-4a04-99c4-53cbffe952a3",
+        "landingzone_uuid": "46f4d0d7-b446-4a04-99c4-53cbffe952a3",
         "sodar_api_token": "token",
     }
-    tpl = "%(sodar_url)slandingzones/api/retrieve/%(landing_zone_uuid)s"
+    tpl = "%(sodar_url)slandingzones/api/retrieve/%(landingzone_uuid)s"
     expected = factories.LandingZoneFactory()
     requests_mock.register_uri(
         "GET",
@@ -60,26 +60,26 @@ def test_landingzone_create(requests_mock):
     # Creation of landing zone.
     l_args = i_args.copy()
     l_tpl = "%(sodar_url)slandingzones/api/create/%(project_uuid)s"
-    landing_zone = factories.LandingZoneFactory(project=i_args["project_uuid"])
+    lz_obj = factories.LandingZoneFactory(project=i_args["project_uuid"])
     requests_mock.register_uri(
         "POST",
         l_tpl % i_args,
         headers={"Authorization": "Token %s" % i_args["sodar_api_token"]},
-        json=cattr.unstructure(landing_zone),
+        json=cattr.unstructure(lz_obj),
     )
     result = landingzone.create(**l_args)
-    assert landing_zone == result
+    assert lz_obj == result
 
 
 def test_landingzones_submit_move(requests_mock):
     # Move landing zone
     m_args = {
         "sodar_url": "https://sodar.example.com/",
-        "landing_zone_uuid": "46f4d0d7-b446-4a04-99c4-53cbffe952a3",
+        "landingzone_uuid": "46f4d0d7-b446-4a04-99c4-53cbffe952a3",
         "sodar_api_token": "token",
     }
-    m_tpl = "%(sodar_url)slandingzones/api/submit/move/%(landing_zone_uuid)s"
-    m_result = factories.LandingZoneFactory(sodar_uuid=m_args["landing_zone_uuid"])
+    m_tpl = "%(sodar_url)slandingzones/api/submit/move/%(landingzone_uuid)s"
+    m_result = factories.LandingZoneFactory(sodar_uuid=m_args["landingzone_uuid"])
     requests_mock.register_uri(
         "POST",
         m_tpl % m_args,
@@ -88,7 +88,7 @@ def test_landingzones_submit_move(requests_mock):
     )
     # Retrieve landing zone.
     r_args = m_args.copy()
-    r_tpl = "%(sodar_url)slandingzones/api/retrieve/%(landing_zone_uuid)s"
+    r_tpl = "%(sodar_url)slandingzones/api/retrieve/%(landingzone_uuid)s"
     r_result = m_result
     requests_mock.register_uri(
         "GET",
@@ -104,11 +104,11 @@ def test_landingzones_submit_validate(requests_mock):
     # Move landing zone
     m_args = {
         "sodar_url": "https://sodar.example.com/",
-        "landing_zone_uuid": "46f4d0d7-b446-4a04-99c4-53cbffe952a3",
+        "landingzone_uuid": "46f4d0d7-b446-4a04-99c4-53cbffe952a3",
         "sodar_api_token": "token",
     }
-    m_tpl = "%(sodar_url)slandingzones/api/submit/validate/%(landing_zone_uuid)s"
-    m_result = factories.LandingZoneFactory(sodar_uuid=m_args["landing_zone_uuid"])
+    m_tpl = "%(sodar_url)slandingzones/api/submit/validate/%(landingzone_uuid)s"
+    m_result = factories.LandingZoneFactory(sodar_uuid=m_args["landingzone_uuid"])
     requests_mock.register_uri(
         "POST",
         m_tpl % m_args,
@@ -117,7 +117,7 @@ def test_landingzones_submit_validate(requests_mock):
     )
     # Retrieve landing zone.
     r_args = m_args.copy()
-    r_tpl = "%(sodar_url)slandingzones/api/retrieve/%(landing_zone_uuid)s"
+    r_tpl = "%(sodar_url)slandingzones/api/retrieve/%(landingzone_uuid)s"
     r_result = m_result
     requests_mock.register_uri(
         "GET",
