@@ -58,10 +58,10 @@ def update(*, sodar_url, sodar_api_token, project_uuid, project):
     url_tpl = "%(sodar_url)s/project/api/update/%(project_uuid)s"
     url = url_tpl % {"sodar_url": sodar_url, "project_uuid": project_uuid}
 
-    logger.debug("HTTP POST request to %s", url)
+    logger.debug("HTTP PATCH request to %s", url)
     headers = {"Authorization": "Token %s" % sodar_api_token}
     data = cattr.unstructure(project)
     data.pop("sodar_uuid")
-    r = requests.post(url, headers=headers, data=data)
+    r = requests.patch(url, headers=headers, data=data)
     r.raise_for_status()
     return cattr.structure(r.json(), models.Project)

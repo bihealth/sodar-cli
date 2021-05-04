@@ -15,11 +15,10 @@ from sodar_cli.project.config import ProjectUpdateConfig
 def setup_argparse(parser):
     parser.add_argument("--hidden-cmd", dest="project_cmd", default=run, help=argparse.SUPPRESS)
     parser.add_argument("project_uuid", help="UUID of the project to update.", type=uuid.UUID)
-    parser.add_argument("--title", default="Project Title", help="Title of the project")
-    parser.add_argument(
-        "--type", default="Project Type", help="Type of the project [PROJECT, CATEGORY]"
-    )
-    parser.add_argument("--parent-uuid", help="UUID of the parent project, if any")
+    parser.add_argument("--title", help="Title of the project")
+    parser.add_argument("--parent-uuid", help="UUID of the parent project")
+    parser.add_argument("--owner-uuid", help="UUID of the owner")
+    parser.add_argument("--type", help="Type of the project [PROJECT, CATEGORY], default PROJECT")
     parser.add_argument("--description", help="Description text, optional")
     parser.add_argument("--readme", help="README text, markdown allowed, optional")
 
@@ -33,7 +32,7 @@ def run(config, toml_config, args, _parser, _subparser, file=None):
         sodar_uuid=args.project_uuid,
         title=args.title,
         type=args.type,
-        parent_uuid=args.parent_uuid,
+        parent=args.parent_uuid,
         description=args.description,
         readme=args.readme,
     )

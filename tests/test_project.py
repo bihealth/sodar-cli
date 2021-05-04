@@ -135,11 +135,17 @@ def test_project_create(capsys, requests_mock):
             SODAR_API_TOKEN,
             "project",
             "create",
+            "--parent-uuid",
+            "YYY",
+            "--title",
+            "The title",
+            "--owner-uuid",
+            "OOO",
         ]
     )
     captured = capsys.readouterr()
 
-    assert json.dumps(cattr.unstructure(p_obj)) + "\n" == captured.out
+    assert cattr.unstructure(p_obj) == json.loads(captured.out)
 
 
 def test_project_update(capsys, requests_mock):
@@ -151,7 +157,7 @@ def test_project_update(capsys, requests_mock):
     }
     tpl = "%(sodar_url)sproject/api/update/%(project_uuid)s"
     requests_mock.register_uri(
-        "POST",
+        "PATCH",
         tpl % args,
         headers={"Authorization": "Token %s" % args["sodar_api_token"]},
         json=cattr.unstructure(p_obj),

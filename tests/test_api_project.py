@@ -79,7 +79,7 @@ def test_project_update(requests_mock):
     r_args["project"] = p_obj
     r_tpl = "%(sodar_url)sproject/api/update/%(project_uuid)s"
     requests_mock.register_uri(
-        "POST",
+        "PATCH",
         r_tpl % r_args,
         headers={"Authorization": "Token %s" % r_args["sodar_api_token"]},
         json=cattr.unstructure(p_obj),

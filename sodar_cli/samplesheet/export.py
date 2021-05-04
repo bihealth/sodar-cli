@@ -63,3 +63,7 @@ def run(config, toml_config, args, _parser, _subparser, file=None):
             else:
                 with open(path_a, "wt") as outputf:
                     print(assay["tsv"], file=outputf)
+    if not args.print_output and not args.write_output:
+        logger.warn(
+            "Did nothing with result. You probably want either --write-output or --print-output"
+        )

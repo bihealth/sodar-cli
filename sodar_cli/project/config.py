@@ -65,7 +65,7 @@ class ProjectCreateConfig:
     #: Project type, one of ``"PROJECT"`` or ``"CATEGORY"``
     type: str
     #: Parent category UUID.
-    parent_uuid: typing.Optional[str] = None
+    parent: typing.Optional[str] = None
     #: Project description.
     description: typing.Optional[str] = None
     #: Project README, supports markdown.
@@ -78,7 +78,7 @@ class ProjectCreateConfig:
             project_config=project_config,
             title=args.title,
             type=args.type,
-            parent_uuid=args.parent_uuid,
+            parent=args.parent_uuid,
             description=args.description,
             readme=args.readme,
         )
@@ -99,7 +99,7 @@ class ProjectUpdateConfig:
     #: Project type, one of ``"PROJECT"`` or ``"CATEGORY"``
     type: str
     #: Parent category UUID.
-    parent_uuid: str
+    parent: str
     #: Project description.
     description: typing.Optional[str] = None
     #: Project README, supports markdown.
@@ -113,7 +113,7 @@ class ProjectUpdateConfig:
             project_uuid=args.project_uuid,
             title=args.title,
             type=args.type,
-            parent_uuid=args.parent_uuid,
+            parent=args.parent_uuid,
             description=args.description,
             readme=args.readme,
         )
