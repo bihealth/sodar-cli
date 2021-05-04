@@ -15,7 +15,7 @@
 SODAR CLI
 =========
 
-Command line interface for [SODAR Server](https://github.com/bihealth/sodar-server)
+Command line interface for `SODAR Server <https://github.com/bihealth/sodar-server>`__.
 
 ---------------
 Getting Started
