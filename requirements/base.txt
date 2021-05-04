@@ -5,17 +5,12 @@ attrs
 cattrs
 # Easy date parsing (e.g., from API).
 python-dateutil
-# Pretty printing.
-prettyprinter
 
 # Easy logging.
 logzero
 
 # Compact, round-tripable configuration format.
 toml
-
-# Functionaly programming tools.
-toolz
 
 # simplejson has better encoders/decoders
 simplejson
