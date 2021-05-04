@@ -53,7 +53,7 @@ setup(
     long_description=readme + "\n\n" + history,
     include_package_data=True,
     keywords="sodar_cli",
-    name="sodar_cli",
+    name="sodar-cli",
     packages=find_packages(include=["sodar_cli"]),
     test_suite="tests",
     tests_require=test_requirements,
