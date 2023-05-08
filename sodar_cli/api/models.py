@@ -40,6 +40,8 @@ class User:
     name: str
     #: Email address of the user
     email: str
+    #: Superuser status of the user
+    is_superuser: bool
 
 
 @attr.s(frozen=True, auto_attribs=True)
@@ -116,22 +118,25 @@ class LandingZone:
     #: Date of last modification.
     date_modified: str
 
-    #: Status of the landing zone.
-    status: str
     #: UUID of the containing project.
     project: str
-
+    #: Status of the landing zone.
+    status: str
+    #: Status information string.
+    status_info: str
+    #: Is write access locked for the landing zone?
+    status_locked: bool
     #: Title of the landing zone.
     title: str
     #: Description of the landing zone.
     description: str
+    #: Message displayed to users on successful moving of zone
+    user_message: str
     #: Owning user.
     user: User
 
     #: UUID of the related assay.
     assay: str
-    #: Status information string.
-    status_info: str
     #: Optional configuration name.
     configuration: typing.Optional[typing.Any] = None
     #: Optional configuration data.
