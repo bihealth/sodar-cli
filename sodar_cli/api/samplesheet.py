@@ -62,3 +62,34 @@ def upload(*, sodar_url, sodar_api_token, project_uuid, file_paths):
         r = requests.post(url, headers=headers, files=files)
     r.raise_for_status()
     return r.json()
+
+
+def file_exists(*, sodar_url, sodar_api_token, checksum):
+    """
+    Return status of data object existing in SODAR iRODS by MD5 checksum.
+    Includes all projects in search regardless of user permissions.
+    """
+    while sodar_url.endswith("/"):
+        sodar_url = sodar_url[:-1]
+    url_tpl = "%(sodar_url)s/samplesheets/api/file/exists?checksum=%(checksum)s"
+    url = url_tpl % {"sodar_url": sodar_url, "checksum": checksum}
+
+    logger.debug("HTTP GET request to %s", url)
+    headers = {"Authorization": "Token %s" % sodar_api_token}
+    r = requests.get(url, headers=headers)
+    r.raise_for_status()
+    return r.json()
+
+
+def file_list(*, sodar_url, sodar_api_token, project_uuid):
+    """Return a list of files in the project sample data repository."""
+    while sodar_url.endswith("/"):
+        sodar_url = sodar_url[:-1]
+    url_tpl = "%(sodar_url)s/samplesheets/api/file/list/%(project_uuid)s"
+    url = url_tpl % {"sodar_url": sodar_url, "project_uuid": project_uuid}
+
+    logger.debug("HTTP GET request to %s", url)
+    headers = {"Authorization": "Token %s" % sodar_api_token}
+    r = requests.get(url, headers=headers)
+    r.raise_for_status()
+    return r.json()
