@@ -63,3 +63,39 @@ def test_samplesheets_upload(requests_mock, tmpdir):
     )
     result = samplesheet.upload(**args)
     assert expected == result
+
+
+def test_samplesheets_file_exists(requests_mock):
+    args = {
+        "sodar_url": "https://sodar.example.com/",
+        "sodar_api_token": "token",
+        "checksum": "11c01ee50c740dd352af64100a491321",
+    }
+    tpl = "%(sodar_url)ssamplesheets/api/file/exists?checksum=%(checksum)s"
+    expected = {"detail":"File exists", "status": True}
+    requests_mock.register_uri(
+        "GET",
+        tpl % args,
+        headers={"Authorization": "Token %s" % args["sodar_api_token"]},
+        json=expected,
+    )
+    result = samplesheet.file_exists(**args)
+    assert expected == result
+
+
+def test_samplesheets_file_list(requests_mock):
+    args = {
+        "sodar_url": "https://sodar.example.com/",
+        "project_uuid": "46f4d0d7-b446-4a04-99c4-53cbffe952a3",
+        "sodar_api_token": "token",
+    }
+    tpl = "%(sodar_url)ssamplesheets/api/file/list/%(project_uuid)s"
+    expected = {"irods_data": [{"data": "object"}]}
+    requests_mock.register_uri(
+        "GET",
+        tpl % args,
+        headers={"Authorization": "Token %s" % args["sodar_api_token"]},
+        json=expected,
+    )
+    result = samplesheet.file_list(**args)
+    assert expected == result
