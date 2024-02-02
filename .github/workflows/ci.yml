@@ -9,10 +9,10 @@ jobs:
     strategy:
       matrix:
         python-version:
-          - 3.6
-          - 3.7
           - 3.8
           - 3.9
+          - 3.10
+          - 3.11
 
     steps:
       - name: Install Python via conda.
@@ -39,9 +39,8 @@ jobs:
         with:
           project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
           coverage-reports: coverage.xml
-        if: ${{ matrix.python-version == '3.7' && (github.ref == 'refs/heads/main') }}
+        if: ${{ matrix.python-version == '3.8' && (github.ref == 'refs/heads/main') }}
       - name: Check style with black
         run: black --check --line-length 100 .
-        if: ${{ matrix.python-version < '3.9' }}
       - name: Check style with flake8
         run: flake8 .
