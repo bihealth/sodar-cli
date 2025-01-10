@@ -55,9 +55,9 @@ source_suffix = ".rst"
 master_doc = "index"
 
 # General information about the project.
-project = u"SODAR CLI"
-copyright = u"2020-2021 CUBI - Core Unit Bioinformatics, Berlin Institute of Health"
-author = u"Manuel Holtgrewe"
+project = "SODAR CLI"
+copyright = "2020-2021 CUBI - Core Unit Bioinformatics, Berlin Institute of Health"
+author = "Manuel Holtgrewe"
 
 # The version info for the project you're documenting, acts as replacement
 # for |version| and |release|, also used in various other places throughout
@@ -133,7 +133,13 @@ latex_elements = {
 # (source start file, target name, title, author, documentclass
 # [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, "sodar_cli.tex", u"SODAR CLI Documentation", u"Core Unit Bioinformatics", "manual")
+    (
+        master_doc,
+        "sodar_cli.tex",
+        "SODAR CLI Documentation",
+        "Core Unit Bioinformatics",
+        "manual",
+    )
 ]
 
 
@@ -141,7 +147,7 @@ latex_documents = [
 
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
-man_pages = [(master_doc, "sodar_cli", u"SODAR CLI Documentation", [author], 1)]
+man_pages = [(master_doc, "sodar_cli", "SODAR CLI Documentation", [author], 1)]
 
 
 # -- Options for Texinfo output ----------------------------------------
@@ -153,7 +159,7 @@ texinfo_documents = [
     (
         master_doc,
         "sodar_cli",
-        u"SODAR CLI Documentation",
+        "SODAR CLI Documentation",
         author,
         "sodar_cli",
         "One line description of project.",

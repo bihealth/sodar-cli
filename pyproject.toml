@@ -42,6 +42,39 @@ relative_files = true
 [tool.coverage.report]
 exclude_lines = ["pragma: no cover", "def __repr__", "if __name__ == '__main__':"]
 
+[tool.ruff]
+# Exclude a variety of commonly ignored directories.
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".git-rewrite",
+    ".hg",
+    ".ipynb_checkpoints",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pyenv",
+    ".pytest_cache",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    ".vscode",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "site-packages",
+    "venv",
+]
+line-length = 120
+indent-width = 4
+
 [tool.ruff.lint]
 ignore = ["E203", "E266", "E501"]
 select = ["B", "C", "E", "F", "W"]
