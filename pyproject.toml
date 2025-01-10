@@ -1,3 +1,7 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "sodar-cli"
 description = "Command line interface client for SODAR REST API."
@@ -27,6 +31,9 @@ dependencies = [
 
 [project.license]
 file = "LICENSE"
+
+[project.scripts]
+sodar-cli = "sodar_cli.__main__:main"
 
 [tool.setuptools]
 packages = ["sodar_cli"]
