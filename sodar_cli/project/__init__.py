@@ -16,9 +16,7 @@ def setup_argparse(parser: argparse.ArgumentParser) -> None:
 
     setup_argparse_list(subparsers.add_parser("list", help="List Projects."))
     setup_argparse_retrieve(subparsers.add_parser("retrieve", help="Retrieve project."))
-    setup_argparse_create(
-        subparsers.add_parser("create", help="Create project (there is no delete!).")
-    )
+    setup_argparse_create(subparsers.add_parser("create", help="Create project (there is no delete!)."))
     setup_argparse_update(subparsers.add_parser("update", help="Update project."))
 
 

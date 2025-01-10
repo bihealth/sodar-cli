@@ -13,9 +13,16 @@ from sodar_cli.landingzone.config import LandingZoneListConfig
 
 
 def setup_argparse(parser):
-    parser.add_argument("--hidden-cmd", dest="landingzone_cmd", default=run, help=argparse.SUPPRESS)
     parser.add_argument(
-        "project_uuid", help="UUID of the project to create landing zone within.", type=uuid.UUID
+        "--hidden-cmd",
+        dest="landingzone_cmd",
+        default=run,
+        help=argparse.SUPPRESS,
+    )
+    parser.add_argument(
+        "project_uuid",
+        help="UUID of the project to create landing zone within.",
+        type=uuid.UUID,
     )
 
 

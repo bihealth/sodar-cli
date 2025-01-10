@@ -132,9 +132,7 @@ def test_samplesheet_export(capsys, requests_mock, tmpdir):
         "studies": {"s_test.txt": {"tsv": (p_base / "s_test.txt").open("rt").read()}},
         "assays": {
             "a_test_exome_sequencing_nucleotide_sequencing.txt": {
-                "tsv": (p_base / "a_test_exome_sequencing_nucleotide_sequencing.txt")
-                .open("rt")
-                .read()
+                "tsv": (p_base / "a_test_exome_sequencing_nucleotide_sequencing.txt").open("rt").read()
             }
         },
     }

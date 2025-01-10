@@ -13,9 +13,16 @@ from sodar_cli.landingzone.config import LandingZoneSubmitMoveConfig
 
 
 def setup_argparse(parser):
-    parser.add_argument("--hidden-cmd", dest="landingzone_cmd", default=run, help=argparse.SUPPRESS)
     parser.add_argument(
-        "landingzone_uuid", help="UUID of the landing zone to move.", type=uuid.UUID
+        "--hidden-cmd",
+        dest="landingzone_cmd",
+        default=run,
+        help=argparse.SUPPRESS,
+    )
+    parser.add_argument(
+        "landingzone_uuid",
+        help="UUID of the landing zone to move.",
+        type=uuid.UUID,
     )
 
 

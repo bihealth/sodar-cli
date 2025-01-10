@@ -38,7 +38,8 @@ class LandingZoneListConfig:
         _ = toml_config
         # toml_config = toml_config or {}
         return LandingZoneListConfig(
-            landingzone_config=landingzone_config, project_uuid=args.project_uuid
+            landingzone_config=landingzone_config,
+            project_uuid=args.project_uuid,
         )
 
 
@@ -56,7 +57,8 @@ class LandingZoneRetrieveConfig:
     def create(args, landingzone_config, toml_config=None):
         # toml_config = toml_config or {}
         return LandingZoneRetrieveConfig(
-            landingzone_config=landingzone_config, landingzone_uuid=args.landingzone_uuid
+            landingzone_config=landingzone_config,
+            landingzone_uuid=args.landingzone_uuid,
         )
 
 
@@ -113,7 +115,8 @@ class LandingZoneSubmitDeleteConfig:
     def create(args, landingzone_config, toml_config=None):
         # toml_config = toml_config or {}
         return LandingZoneSubmitDeleteConfig(
-            landingzone_config=landingzone_config, landingzone_uuid=args.landingzone_uuid
+            landingzone_config=landingzone_config,
+            landingzone_uuid=args.landingzone_uuid,
         )
 
 
@@ -131,7 +134,8 @@ class LandingZoneSubmitValidateConfig:
     def create(args, landingzone_config, toml_config=None):
         # toml_config = toml_config or {}
         return LandingZoneSubmitValidateConfig(
-            landingzone_config=landingzone_config, landingzone_uuid=args.landingzone_uuid
+            landingzone_config=landingzone_config,
+            landingzone_uuid=args.landingzone_uuid,
         )
 
 
@@ -149,5 +153,6 @@ class LandingZoneSubmitMoveConfig:
     def create(args, landingzone_config, toml_config=None):
         # toml_config = toml_config or {}
         return LandingZoneSubmitMoveConfig(
-            landingzone_config=landingzone_config, landingzone_uuid=args.landingzone_uuid
+            landingzone_config=landingzone_config,
+            landingzone_uuid=args.landingzone_uuid,
         )

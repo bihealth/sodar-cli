@@ -13,9 +13,16 @@ from sodar_cli.samplesheet.config import SampleSheetRetrieveConfig
 
 
 def setup_argparse(parser):
-    parser.add_argument("--hidden-cmd", dest="samplesheet_cmd", default=run, help=argparse.SUPPRESS)
     parser.add_argument(
-        "project_uuid", help="UUID of project to retrieve sample sheet for", type=uuid.UUID
+        "--hidden-cmd",
+        dest="samplesheet_cmd",
+        default=run,
+        help=argparse.SUPPRESS,
+    )
+    parser.add_argument(
+        "project_uuid",
+        help="UUID of project to retrieve sample sheet for",
+        type=uuid.UUID,
     )
 
 

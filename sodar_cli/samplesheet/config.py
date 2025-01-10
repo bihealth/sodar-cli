@@ -36,7 +36,8 @@ class SampleSheetRetrieveConfig:
         _ = toml_config
         # toml_config = toml_config or {}
         return SampleSheetRetrieveConfig(
-            samplesheet_config=samplesheet_config, project_uuid=args.project_uuid
+            samplesheet_config=samplesheet_config,
+            project_uuid=args.project_uuid,
         )
 
 
@@ -77,7 +78,8 @@ class SampleSheetExportConfig:
     def create(args, samplesheet_config, toml_config=None):
         # toml_config = toml_config or {}
         return SampleSheetExportConfig(
-            samplesheet_config=samplesheet_config, project_uuid=args.project_uuid
+            samplesheet_config=samplesheet_config,
+            project_uuid=args.project_uuid,
         )
 
 
@@ -94,6 +96,4 @@ class SampleDataFileExistsConfig:
     @staticmethod
     def create(args, samplesheet_config, toml_config=None):
         # toml_config = toml_config or {}
-        return SampleDataFileExistsConfig(
-            samplesheet_config=samplesheet_config, md5_sum=args.md5_sum
-        )
+        return SampleDataFileExistsConfig(samplesheet_config=samplesheet_config, md5_sum=args.md5_sum)

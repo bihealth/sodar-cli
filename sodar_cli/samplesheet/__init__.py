@@ -4,8 +4,12 @@ import argparse
 
 from sodar_cli.common import run_nocmd
 from sodar_cli.samplesheet.config import SampleSheetConfig
-from sodar_cli.samplesheet.retrieve import setup_argparse as setup_argparse_retrieve
-from sodar_cli.samplesheet.importisa import setup_argparse as setup_argparse_import
+from sodar_cli.samplesheet.retrieve import (
+    setup_argparse as setup_argparse_retrieve,
+)
+from sodar_cli.samplesheet.importisa import (
+    setup_argparse as setup_argparse_import,
+)
 from sodar_cli.samplesheet.export import setup_argparse as setup_argparse_export
 
 
@@ -13,9 +17,7 @@ def setup_argparse(parser: argparse.ArgumentParser) -> None:
     """Main entry point for subcommand."""
     subparsers = parser.add_subparsers(dest="samplesheet_cmd")
 
-    setup_argparse_retrieve(
-        subparsers.add_parser("retrieve", help="Retrieve sample sheet for project.")
-    )
+    setup_argparse_retrieve(subparsers.add_parser("retrieve", help="Retrieve sample sheet for project."))
     setup_argparse_import(subparsers.add_parser("import", help="Import ISA-tab into project."))
     setup_argparse_export(subparsers.add_parser("export", help="Export ISA-tab from project."))
 

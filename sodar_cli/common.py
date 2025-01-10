@@ -25,12 +25,8 @@ class CommonConfig:
         return CommonConfig(
             verbose=args.verbose,
             verify_ssl=args.verify_ssl,
-            sodar_api_token=(
-                args.sodar_api_token or toml_config.get("global", {}).get("sodar_api_token")
-            ),
-            sodar_server_url=(
-                args.sodar_server_url or toml_config.get("global", {}).get("sodar_server_url")
-            ),
+            sodar_api_token=(args.sodar_api_token or toml_config.get("global", {}).get("sodar_api_token")),
+            sodar_server_url=(args.sodar_server_url or toml_config.get("global", {}).get("sodar_server_url")),
         )
 
 

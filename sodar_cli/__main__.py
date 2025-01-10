@@ -34,7 +34,12 @@ def setup_argparse():
     """Create argument parser."""
     # Construct argument parser and set global options.
     parser = argparse.ArgumentParser(prog="sodar-cli")
-    parser.add_argument("--verbose", action="store_true", default=False, help="Increase verbosity.")
+    parser.add_argument(
+        "--verbose",
+        action="store_true",
+        default=False,
+        help="Increase verbosity.",
+    )
     parser.add_argument("--version", action="version", version="%%(prog)s %s" % __version__)
 
     group = parser.add_argument_group("Basic Configuration")
@@ -65,12 +70,8 @@ def setup_argparse():
     subparsers = parser.add_subparsers(dest="cmd")
 
     setup_argparse_project(subparsers.add_parser("project", help="Work with projects."))
-    setup_argparse_samplesheet(
-        subparsers.add_parser("samplesheet", help="Work with sample sheets.")
-    )
-    setup_argparse_landingzone(
-        subparsers.add_parser("landingzone", help="Work with landing zones.")
-    )
+    setup_argparse_samplesheet(subparsers.add_parser("samplesheet", help="Work with sample sheets."))
+    setup_argparse_landingzone(subparsers.add_parser("landingzone", help="Work with landing zones."))
 
     return parser, subparsers
 
@@ -88,9 +89,7 @@ def main(argv=None):
         level = logging.DEBUG
     else:
         # Remove module name and line number if not running in debug mode.s
-        formatter = logzero.LogFormatter(
-            fmt="%(color)s[%(levelname)1.1s %(asctime)s]%(end_color)s %(message)s"
-        )
+        formatter = logzero.LogFormatter(fmt="%(color)s[%(levelname)1.1s %(asctime)s]%(end_color)s %(message)s")
         logzero.formatter(formatter)
         level = logging.INFO
     logzero.loglevel(level=level)
@@ -108,7 +107,10 @@ def main(argv=None):
             break
     else:
         toml_config = None
-        logger.info("Could not find any of the global configuration files %s.", config_paths)
+        logger.info(
+            "Could not find any of the global configuration files %s.",
+            config_paths,
+        )
 
     # Merge configuration from command line/environment args and configuration file.
     config = CommonConfig.create(args, toml_config)
@@ -122,7 +124,11 @@ def main(argv=None):
     }
 
     res = cmds[args.cmd](
-        config, toml_config, args, parser, subparsers.choices[args.cmd] if args.cmd else None
+        config,
+        toml_config,
+        args,
+        parser,
+        subparsers.choices[args.cmd] if args.cmd else None,
     )
     if not res:
         logger.info("All done. Have a nice day!")

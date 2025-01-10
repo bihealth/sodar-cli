@@ -14,7 +14,10 @@ def retrieve(*, sodar_url, sodar_api_token, landingzone_uuid):
     while sodar_url.endswith("/"):
         sodar_url = sodar_url[:-1]
     url_tpl = "%(sodar_url)s/landingzones/api/retrieve/%(landingzone_uuid)s"
-    url = url_tpl % {"sodar_url": sodar_url, "landingzone_uuid": landingzone_uuid}
+    url = url_tpl % {
+        "sodar_url": sodar_url,
+        "landingzone_uuid": landingzone_uuid,
+    }
 
     logger.debug("HTTP GET request to %s", url)
     headers = {"Authorization": "Token %s" % sodar_api_token}
@@ -45,7 +48,9 @@ def create(*, sodar_url, sodar_api_token, project_uuid, assay_uuid=None):
     # Retrieve sample sheet for assay if not given.
     if not assay_uuid:
         investigation = samplesheet.retrieve(
-            sodar_url=sodar_url, sodar_api_token=sodar_api_token, project_uuid=project_uuid
+            sodar_url=sodar_url,
+            sodar_api_token=sodar_api_token,
+            project_uuid=project_uuid,
         )
         if len(investigation.studies) != 1:  # pragma: no cover
             logger.error("Expected one study, found %d", len(investigation.studies))
@@ -76,7 +81,10 @@ def submit_move(*, sodar_url, sodar_api_token, landingzone_uuid):
 
     # Move landing zone through API.
     url_tpl = "%(sodar_url)s/landingzones/api/submit/move/%(landingzone_uuid)s"
-    url = url_tpl % {"sodar_url": sodar_url, "landingzone_uuid": landingzone_uuid}
+    url = url_tpl % {
+        "sodar_url": sodar_url,
+        "landingzone_uuid": landingzone_uuid,
+    }
     logger.debug("HTTP POST request to %s", url)
     headers = {"Authorization": "Token %s" % sodar_api_token}
     r = requests.post(url, headers=headers)
@@ -95,7 +103,10 @@ def submit_validate(*, sodar_url, sodar_api_token, landingzone_uuid):
 
     # Move landing zone through API.
     url_tpl = "%(sodar_url)s/landingzones/api/submit/validate/%(landingzone_uuid)s"
-    url = url_tpl % {"sodar_url": sodar_url, "landingzone_uuid": landingzone_uuid}
+    url = url_tpl % {
+        "sodar_url": sodar_url,
+        "landingzone_uuid": landingzone_uuid,
+    }
     logger.debug("HTTP POST request to %s", url)
     headers = {"Authorization": "Token %s" % sodar_api_token}
     r = requests.post(url, headers=headers)

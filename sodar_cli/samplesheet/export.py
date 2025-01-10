@@ -13,16 +13,29 @@ from sodar_cli.samplesheet.config import SampleSheetExportConfig
 
 
 def setup_argparse(parser):
-    parser.add_argument("--hidden-cmd", dest="samplesheet_cmd", default=run, help=argparse.SUPPRESS)
     parser.add_argument(
-        "--print-output", dest="print_output", action="store_true", help="Print output to stdout"
+        "--hidden-cmd",
+        dest="samplesheet_cmd",
+        default=run,
+        help=argparse.SUPPRESS,
+    )
+    parser.add_argument(
+        "--print-output",
+        dest="print_output",
+        action="store_true",
+        help="Print output to stdout",
     )
     parser.add_argument("--write-output", default=None, help="Write output to given path")
     parser.add_argument(
-        "--overwrite", default=False, action="store_true", help="Overwrite existing files"
+        "--overwrite",
+        default=False,
+        action="store_true",
+        help="Overwrite existing files",
     )
     parser.add_argument(
-        "project_uuid", help="UUID of project to retrieve the sample sheet for", type=uuid.UUID
+        "project_uuid",
+        help="UUID of project to retrieve the sample sheet for",
+        type=uuid.UUID,
     )
 
 
@@ -64,6 +77,4 @@ def run(config, toml_config, args, _parser, _subparser, file=None):
                 with open(path_a, "wt") as outputf:
                     print(assay["tsv"], file=outputf)
     if not args.print_output and not args.write_output:
-        logger.warn(
-            "Did nothing with result. You probably want either --write-output or --print-output"
-        )
+        logger.warn("Did nothing with result. You probably want either --write-output or --print-output")

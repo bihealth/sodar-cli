@@ -16,7 +16,11 @@ def setup_argparse(parser):
     parser.add_argument("--title", required=True, help="Title of the project")
     parser.add_argument("--parent-uuid", required=True, help="UUID of the parent project")
     parser.add_argument("--owner-uuid", required=True, help="UUID of the owner")
-    parser.add_argument("--type", default="PROJECT", help="Type of the project [PROJECT, CATEGORY]")
+    parser.add_argument(
+        "--type",
+        default="PROJECT",
+        help="Type of the project [PROJECT, CATEGORY]",
+    )
     parser.add_argument("--description", help="Description text, optional")
     parser.add_argument("--readme", help="README text, markdown allowed, optional")
 

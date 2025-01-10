@@ -13,11 +13,23 @@ from sodar_cli.samplesheet.config import SampleSheetImportConfig
 
 
 def setup_argparse(parser):
-    parser.add_argument("--hidden-cmd", dest="samplesheet_cmd", default=run, help=argparse.SUPPRESS)
     parser.add_argument(
-        "project_uuid", help="UUID of project to import ISA tab for", type=uuid.UUID
+        "--hidden-cmd",
+        dest="samplesheet_cmd",
+        default=run,
+        help=argparse.SUPPRESS,
     )
-    parser.add_argument("file_paths", metavar="files", nargs="+", help="paths to files to import")
+    parser.add_argument(
+        "project_uuid",
+        help="UUID of project to import ISA tab for",
+        type=uuid.UUID,
+    )
+    parser.add_argument(
+        "file_paths",
+        metavar="files",
+        nargs="+",
+        help="paths to files to import",
+    )
 
 
 def run(config, toml_config, args, _parser, _subparser, file=None):

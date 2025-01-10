@@ -57,7 +57,10 @@ def upload(*, sodar_url, sodar_api_token, project_uuid, file_paths):
         for no, path in enumerate(file_paths):
             p = pathlib.Path(path)
             files.append(
-                ("file_%d" % no, (p.name, stack.enter_context(p.open("rt")), "text/plain"))
+                (
+                    "file_%d" % no,
+                    (p.name, stack.enter_context(p.open("rt")), "text/plain"),
+                )
             )
         r = requests.post(url, headers=headers, files=files)
     r.raise_for_status()
