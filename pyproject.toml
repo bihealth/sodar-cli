@@ -43,8 +43,12 @@ relative_files = true
 exclude_lines = ["pragma: no cover", "def __repr__", "if __name__ == '__main__':"]
 
 [tool.ruff.lint]
-ignore = ["E203", "E266", "E501", "W503"]
-select = ["B", "C", "E", "F", "W", "T4", "B9"]
+ignore = ["E203", "E266", "E501"]
+select = ["B", "C", "E", "F", "W"]
+
+[tool.ruff.lint.mccabe]
+# Flag errors (`C901`) whenever the complexity level exceeds 18.
+max-complexity = 18
 
 [dependency-groups]
 dev = [
