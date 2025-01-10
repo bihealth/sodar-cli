@@ -94,6 +94,8 @@ addopts = [
 
 [dependency-groups]
 dev = [
+    "factory-boy==2.12.0",
     "pytest>=8.3.4",
+    "requests-mock>=1.7.0",
     "ruff>=0.9.0",
 ]
