@@ -168,7 +168,7 @@ def test_samplesheet_export(capsys, requests_mock, tmpdir):
     captured = capsys.readouterr()
 
     assert json.dumps(result) + "\n" == captured.out
-    assert list(sorted(x.basename for x in tmpdir.listdir())) == [
+    assert sorted(x.basename for x in tmpdir.listdir()) == [
         "a_test_exome_sequencing_nucleotide_sequencing.txt",
         "i_Investigation.txt",
         "s_test.txt",
