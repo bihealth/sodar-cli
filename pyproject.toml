@@ -90,6 +90,11 @@ select = ["B", "C", "E", "F", "W"]
 # Flag errors (`C901`) whenever the complexity level exceeds 18.
 max-complexity = 18
 
+[tool.pytest.ini_options]
+addopts = [
+    "--import-mode=importlib",
+]
+
 [dependency-groups]
 dev = [
     "pytest>=8.3.4",

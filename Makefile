@@ -1,37 +1,15 @@
 .PHONY: all
-all: black
+all: format lint pytest
 
-.PHONY: black
-black:
-	black -l 100 .
+.PHONY: format
+format:
+	uv run ruff format .
 
-.PHONY: test
-test:
-	black -l 100 --check .
+.PHONY: lint
+lint:
+	uv run ruff --check .
 
 .PHONY: pytest
 pytest:
-	pytest .
+	uv run pytest
 
-.PHONY: lint-all
-lint-all: bandit pyflakes pep257 prospector
-
-.PHONY: bandit
-bandit:
-	bandit -c bandit.yml -r sodar_cli
-
-.PHONY: pyflakes
-pyflakes:
-	pyflakes sodar_cli tests
-
-.PHONY: pep257
-pep257:
-	pep257
-
-.PHONY: flake8
-flake8:
-	flake8
-
-.PHONY: prospector
-prospector:
-	prospector
