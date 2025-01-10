@@ -7,7 +7,10 @@ from . import factories
 
 
 def test_project_list(requests_mock):
-    args = {"sodar_url": "https://sodar.example.com/", "sodar_api_token": "token"}
+    args = {
+        "sodar_url": "https://sodar.example.com/",
+        "sodar_api_token": "token",
+    }
     tpl = "%(sodar_url)sproject/api/list"
     expected = [factories.ProjectFactory()]
     requests_mock.register_uri(
