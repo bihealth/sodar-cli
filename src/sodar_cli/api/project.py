@@ -6,6 +6,8 @@ import requests
 
 from sodar_cli.api import models
 
+ACCEPT_HEADER = {"Accept": "application/vnd.bihealth.sodar-core.projectroles+json; version=1.0"}
+
 
 def list_(*, sodar_url, sodar_api_token):
     """List projects."""
@@ -15,7 +17,7 @@ def list_(*, sodar_url, sodar_api_token):
     url = url_tpl % {"sodar_url": sodar_url}
 
     logger.debug("HTTP GET request to %s", url)
-    headers = {"Authorization": "Token %s" % sodar_api_token}
+    headers = {"Authorization": "Token %s" % sodar_api_token, **ACCEPT_HEADER}
     r = requests.get(url, headers=headers)
     r.raise_for_status()
     return cattr.structure(r.json(), typing.List[models.Project])
@@ -29,7 +31,7 @@ def retrieve(*, sodar_url, sodar_api_token, project_uuid):
     url = url_tpl % {"sodar_url": sodar_url, "project_uuid": project_uuid}
 
     logger.debug("HTTP GET request to %s", url)
-    headers = {"Authorization": "Token %s" % sodar_api_token}
+    headers = {"Authorization": "Token %s" % sodar_api_token, **ACCEPT_HEADER}
     r = requests.get(url, headers=headers)
     r.raise_for_status()
     return cattr.structure(r.json(), models.Project)
@@ -43,7 +45,7 @@ def create(*, sodar_url, sodar_api_token, project):
     url = url_tpl % {"sodar_url": sodar_url}
 
     logger.debug("HTTP POST request to %s", url)
-    headers = {"Authorization": "Token %s" % sodar_api_token}
+    headers = {"Authorization": "Token %s" % sodar_api_token, **ACCEPT_HEADER}
     data = cattr.unstructure(project)
     data.pop("sodar_uuid")
     r = requests.post(url, headers=headers, data=data)
@@ -59,7 +61,7 @@ def update(*, sodar_url, sodar_api_token, project_uuid, project):
     url = url_tpl % {"sodar_url": sodar_url, "project_uuid": project_uuid}
 
     logger.debug("HTTP PATCH request to %s", url)
-    headers = {"Authorization": "Token %s" % sodar_api_token}
+    headers = {"Authorization": "Token %s" % sodar_api_token, **ACCEPT_HEADER}
     data = cattr.unstructure(project)
     data.pop("sodar_uuid")
     r = requests.patch(url, headers=headers, data=data)

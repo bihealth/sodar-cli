@@ -8,6 +8,8 @@ import requests
 from sodar_cli.api import samplesheet
 from sodar_cli.api import models
 
+ACCEPT_HEADER = {"Accept": "application/vnd.bihealth.sodar.landingzones+json; version=1.0"}
+
 
 def retrieve(*, sodar_url, sodar_api_token, landingzone_uuid):
     """Return landing zones in project."""
@@ -20,7 +22,7 @@ def retrieve(*, sodar_url, sodar_api_token, landingzone_uuid):
     }
 
     logger.debug("HTTP GET request to %s", url)
-    headers = {"Authorization": "Token %s" % sodar_api_token}
+    headers = {"Authorization": "Token %s" % sodar_api_token, **ACCEPT_HEADER}
     r = requests.get(url, headers=headers)
     r.raise_for_status()
     return cattr.structure(r.json(), models.LandingZone)
@@ -34,7 +36,7 @@ def list_(*, sodar_url, sodar_api_token, project_uuid):
     url = url_tpl % {"sodar_url": sodar_url, "project_uuid": project_uuid}
 
     logger.debug("HTTP GET request to %s", url)
-    headers = {"Authorization": "Token %s" % sodar_api_token}
+    headers = {"Authorization": "Token %s" % sodar_api_token, **ACCEPT_HEADER}
     r = requests.get(url, headers=headers)
     r.raise_for_status()
     return cattr.structure(r.json(), typing.List[models.LandingZone])
@@ -67,7 +69,7 @@ def create(*, sodar_url, sodar_api_token, project_uuid, assay_uuid=None):
     url_tpl = "%(sodar_url)s/landingzones/api/create/%(project_uuid)s"
     url = url_tpl % {"sodar_url": sodar_url, "project_uuid": project_uuid}
     logger.debug("HTTP POST request to %s", url)
-    headers = {"Authorization": "Token %s" % sodar_api_token}
+    headers = {"Authorization": "Token %s" % sodar_api_token, **ACCEPT_HEADER}
     data = {"assay": assay_uuid}
     r = requests.post(url, data=data, headers=headers)
     r.raise_for_status()
@@ -86,7 +88,7 @@ def submit_move(*, sodar_url, sodar_api_token, landingzone_uuid):
         "landingzone_uuid": landingzone_uuid,
     }
     logger.debug("HTTP POST request to %s", url)
-    headers = {"Authorization": "Token %s" % sodar_api_token}
+    headers = {"Authorization": "Token %s" % sodar_api_token, **ACCEPT_HEADER}
     r = requests.post(url, headers=headers)
     r.raise_for_status()
     return retrieve(
@@ -108,7 +110,7 @@ def submit_validate(*, sodar_url, sodar_api_token, landingzone_uuid):
         "landingzone_uuid": landingzone_uuid,
     }
     logger.debug("HTTP POST request to %s", url)
-    headers = {"Authorization": "Token %s" % sodar_api_token}
+    headers = {"Authorization": "Token %s" % sodar_api_token, **ACCEPT_HEADER}
     r = requests.post(url, headers=headers)
     r.raise_for_status()
     return retrieve(

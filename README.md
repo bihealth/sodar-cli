@@ -33,7 +33,7 @@ Server](https://github.com/bihealth/sodar-server).
 ``` bash
 $ git clone git@github.com:bihealth/sodar-cli.git
 $ cd sodar-cli
-$ conda create -n sodar-cli python=3.7
+$ conda create -n sodar-cli python=3.9
 $ conda activate sodar-cli
 $ pip install -e .
 $ cat >~/.sodarrc.toml <<EOF

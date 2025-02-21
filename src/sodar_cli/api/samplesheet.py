@@ -8,6 +8,8 @@ import requests
 
 from sodar_cli.api import models
 
+ACCEPT_HEADER = {"Accept": "application/vnd.bihealth.sodar.samplesheets+json; version=1.0"}
+
 
 def retrieve(*, sodar_url, sodar_api_token, project_uuid):
     """Get investigation information."""
@@ -17,7 +19,7 @@ def retrieve(*, sodar_url, sodar_api_token, project_uuid):
     url = url_tpl % {"sodar_url": sodar_url, "project_uuid": project_uuid}
 
     logger.debug("HTTP GET request to %s", url)
-    headers = {"Authorization": "Token %s" % sodar_api_token}
+    headers = {"Authorization": "Token %s" % sodar_api_token, **ACCEPT_HEADER}
     r = requests.get(url, headers=headers)
     r.raise_for_status()
     # # TODO: remove workaround once SODAR directly returns sodar_uuid
@@ -37,7 +39,7 @@ def export(*, sodar_url, sodar_api_token, project_uuid):
     url = url_tpl % {"sodar_url": sodar_url, "project_uuid": project_uuid}
 
     logger.debug("HTTP GET request to %s", url)
-    headers = {"Authorization": "Token %s" % sodar_api_token}
+    headers = {"Authorization": "Token %s" % sodar_api_token, **ACCEPT_HEADER}
     r = requests.get(url, headers=headers)
     r.raise_for_status()
     return r.json()
@@ -51,7 +53,7 @@ def upload(*, sodar_url, sodar_api_token, project_uuid, file_paths):
     url = url_tpl % {"sodar_url": sodar_url, "project_uuid": project_uuid}
 
     logger.debug("HTTP POST request to %s", url)
-    headers = {"Authorization": "Token %s" % sodar_api_token}
+    headers = {"Authorization": "Token %s" % sodar_api_token, **ACCEPT_HEADER}
     with contextlib.ExitStack() as stack:
         files = []
         for no, path in enumerate(file_paths):
