@@ -10,6 +10,7 @@ from sodar_cli.api import models
 
 ACCEPT_HEADER = {"Accept": "application/vnd.bihealth.sodar.samplesheets+json; version=1.0"}
 
+
 def retrieve(*, sodar_url, sodar_api_token, project_uuid):
     """Get investigation information."""
     while sodar_url.endswith("/"):

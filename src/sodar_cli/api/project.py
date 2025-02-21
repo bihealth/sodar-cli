@@ -6,7 +6,7 @@ import requests
 
 from sodar_cli.api import models
 
-ACCEPT_HEADER = {"Accept": 'application/vnd.bihealth.sodar-core.projectroles+json; version=1.0'}
+ACCEPT_HEADER = {"Accept": "application/vnd.bihealth.sodar-core.projectroles+json; version=1.0"}
 
 
 def list_(*, sodar_url, sodar_api_token):

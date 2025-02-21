@@ -8,7 +8,8 @@ import requests
 from sodar_cli.api import samplesheet
 from sodar_cli.api import models
 
-ACCEPT_HEADER = {"Accept": 'application/vnd.bihealth.sodar.landingzones+json; version=1.0'}
+ACCEPT_HEADER = {"Accept": "application/vnd.bihealth.sodar.landingzones+json; version=1.0"}
+
 
 def retrieve(*, sodar_url, sodar_api_token, landingzone_uuid):
     """Return landing zones in project."""
