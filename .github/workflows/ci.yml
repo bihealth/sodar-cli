@@ -9,7 +9,9 @@ jobs:
     strategy:
       matrix:
         python-version:
-          - 3.9
+          - "3.9"
+          - "3.10"
+          - "3.11"
 
     steps:
       - name: Checkout repository
@@ -24,14 +26,14 @@ jobs:
         uses: astral-sh/setup-uv@v3
         with:
           # Install a specific version of uv and enable caching.
-          version: "0.5.16"
+          version: "0.6.1"
           enable-cache: true
 
       - name: Set up Python
         run: uv python install ${{ matrix.python-version }}
 
       - name: Install the project
-        run: uv sync --all-extras --dev
+        run: uv sync --all-extras --dev --locked
 
       - name: Run tests
         run: uv run pytest
